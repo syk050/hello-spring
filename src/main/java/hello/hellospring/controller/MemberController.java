@@ -4,8 +4,11 @@ import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller // 스프링 컨테이너에 등록하여 스프링이 관리
 public class MemberController {
@@ -40,5 +43,13 @@ public class MemberController {
         service.join(member);
 
         return "redirect:/";
+    }
+
+    @GetMapping("/members")
+    public String list(Model model) {
+        List<Member> members = service.findMembers();
+        model.addAttribute("members", members);
+
+        return "members/memberList";
     }
 }
