@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
-@Repository
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
     /* static
      * static 은 어떤 멤버변수 혹은 메서드가 '인스턴스'에 소속되지 않고 '클래스'에 속하게 됨
