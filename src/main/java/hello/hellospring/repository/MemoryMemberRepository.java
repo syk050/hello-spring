@@ -5,6 +5,11 @@ import hello.hellospring.domain.Member;
 import java.util.*;
 
 public class MemoryMemberRepository implements MemberRepository {
+    /* static
+     * static 은 어떤 멤버변수 혹은 메서드가 '인스턴스'에 소속되지 않고 '클래스'에 속하게 됨
+     * 간단하게 이해하면, 애플리케이션 내에서 유일하게 딱 하나만 존재하는 변수가 됩니다
+     * 하지만 애플리케이션이 전체가 하나의 변수를 사용하는 셈이라
+     * 누가 언제 값을 변경할지 모른다는 위험도 있습니다. */
     private static Map<Long, Member> store = new HashMap<>();
     private static Long sequence = 0L;
 

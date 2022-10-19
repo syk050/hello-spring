@@ -14,8 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MemberServiceTest {
 
-
-    /* 현재 repository store가 static이라 클래스 단에서는 고정 상태
+    /* 현재 repository store가 static이라 클래스에 속한 상태
      * service에서의 repository와 test에서의 repository가 동일한 store를 접근하지만
      * 만약 static이 아니라면
      * service에서 repository와 test의 repository가 다른 store를 접근하게 된다 */
