@@ -1,13 +1,25 @@
 package hello.hellospring;
 
+import hello.hellospring.repository.JdbcMemberRepository;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import hello.hellospring.service.MemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.sql.DataSource;
+
 @Configuration
 public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
     @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository());
@@ -20,7 +32,8 @@ public class SpringConfig {
          * 리포지트리를 바꾸게 될 때
          * 다른 코드 수정 없이 교체할 수 있다
          */
-        return new MemoryMemberRepository();
+//        return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
     }
 }
 /* DI에는 필드 주입, setter 주입, 생성자 주입 이렇게 3가지 방법이 있다
