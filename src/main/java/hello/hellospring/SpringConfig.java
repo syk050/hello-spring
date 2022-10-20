@@ -21,29 +21,38 @@ public class SpringConfig {
     }
 */
 
-    private EntityManager em;
+    /*private EntityManager em;
 
     public SpringConfig(EntityManager em) {
         this.em = em;
+    }*/
+
+    private final MemberRepository repository;
+
+    @Autowired
+    public SpringConfig(MemberRepository repository) {
+        this.repository = repository;
     }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+//        return new MemberService(memberRepository());
+        return new MemberService(repository);
     }
 
-    @Bean
+/*    @Bean
     public MemberRepository memberRepository() {
-        /* 상황에 따라 구현 클래스를 변경해야 하면 설정을 통해 스프링 빈으로 등록한다.
+        *//* 상황에 따라 구현 클래스를 변경해야 하면 설정을 통해 스프링 빈으로 등록한다.
          * 현재는 메모리 리포지트리를 사용하지만
          * 리포지트리를 바꾸게 될 때
          * 다른 코드 수정 없이 교체할 수 있다
-         */
+         *//*
 //        return new MemoryMemberRepository();
 //        return new JdbcMemberRepository(dataSource);
 //        return new JdbcTemplateMemberRepository(dataSource);
-        return new JpaMemberRepository(em);
-    }
+//        return new JpaMemberRepository(em);
+
+    }*/
 }
 /* DI에는 필드 주입, setter 주입, 생성자 주입 이렇게 3가지 방법이 있다
  * 필드 주입 @Autowired private MemberRepository repository;
