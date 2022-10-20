@@ -1,6 +1,7 @@
 package hello.hellospring;
 
 import hello.hellospring.repository.JdbcMemberRepository;
+import hello.hellospring.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import hello.hellospring.service.MemberService;
@@ -33,7 +34,8 @@ public class SpringConfig {
          * 다른 코드 수정 없이 교체할 수 있다
          */
 //        return new MemoryMemberRepository();
-        return new JdbcMemberRepository(dataSource);
+//        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }
 /* DI에는 필드 주입, setter 주입, 생성자 주입 이렇게 3가지 방법이 있다
